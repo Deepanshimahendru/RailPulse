@@ -1,0 +1,141 @@
+{
+  "generated_at": "2026-11-13T22:08:55",
+  "input": {
+    "rows": 67126,
+    "journeys": 3353,
+    "trains": 1398,
+    "stations": 3000,
+    "start_date_min": "2026-10-07",
+    "start_date_max": "2026-10-10",
+    "latest_scheduled_time": "2026-10-10T23:25:00+05:30",
+    "latest_actual_time": "2026-10-10T23:41:00+05:30"
+  },
+  "midnight_rollover": {
+    "rule": "scheduled_arrival later than same-stop scheduled_departure by > 720 min and the arrival minus one day still fits previous departure <= arrival <= own departure",
+    "corrected_rows": 27,
+    "unresolved_rows": 0,
+    "delay_values_changed": 27,
+    "corrected_delay_range_min": [
+      -22.0,
+      156.0
+    ],
+    "corrections_file": "rollover_corrections.csv"
+  },
+  "delays_after_cleaning": {
+    "observed_arrival_delays": 55953,
+    "min": -120.0,
+    "max": 1343.0,
+    "below_minus_60_min_kept_as_genuine_early_arrivals": 21,
+    "above_600_min_unchanged_for_review": 228
+  },
+  "structure": {
+    "origin_rows": 3353,
+    "destination_rows": 3353,
+    "unscheduled_stop_rows": 5,
+    "non_origin_rows_without_scheduled_arrival": 68,
+    "journeys_with_repeated_station": 80,
+    "rows_in_repeated_station_journeys": 3626,
+    "journeys_with_non_contiguous_seq": 4
+  },
+  "completeness": {
+    "note": "status describes the journey, not every station. Missing actual times are NOT filled in; they stay missing.",
+    "by_status": {
+      "completed": {
+        "rows": 60524,
+        "journeys": 3036,
+        "stops_with_scheduled_arrival": 57443,
+        "arrival_observed_share": 0.9184
+      },
+      "cancelled": {
+        "rows": 1514,
+        "journeys": 132,
+        "stops_with_scheduled_arrival": 1382,
+        "arrival_observed_share": 0.0
+      },
+      "incomplete": {
+        "rows": 143,
+        "journeys": 21,
+        "stops_with_scheduled_arrival": 122,
+        "arrival_observed_share": 0.5902
+      },
+      "not_started": {
+        "rows": 74,
+        "journeys": 8,
+        "stops_with_scheduled_arrival": 66,
+        "arrival_observed_share": 0.0
+      },
+      "partially_cancelled": {
+        "rows": 2028,
+        "journeys": 81,
+        "stops_with_scheduled_arrival": 1947,
+        "arrival_observed_share": 0.7052
+      },
+      "diverted": {
+        "rows": 2843,
+        "journeys": 75,
+        "stops_with_scheduled_arrival": 2745,
+        "arrival_observed_share": 0.6375
+      }
+    },
+    "completed_journeys": 3036,
+    "completed_journeys_with_every_scheduled_arrival_observed": 1754,
+    "completed_stops_without_actual_arrival": 4685
+  },
+  "coverage": {
+    "rows_by_start_date": {
+      "2026-10-07": 22377,
+      "2026-10-08": 21949,
+      "2026-10-09": 16852,
+      "2026-10-10": 5948
+    },
+    "last_start_date_is_partial": true,
+    "note": "The source file ends at the snapshot date, so journeys starting on the last date are truncated. Do not treat the last date as a full day."
+  },
+  "validation_checks": [
+    {
+      "name": "row_count_preserved",
+      "passed": true,
+      "detail": "raw=67126, clean=67126"
+    },
+    {
+      "name": "unique_train_date_seq",
+      "passed": true,
+      "detail": "0 duplicate keys"
+    },
+    {
+      "name": "sorted_by_journey_and_seq",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "scheduled_arrival_not_after_departure",
+      "passed": true,
+      "detail": "0 rows"
+    },
+    {
+      "name": "arrival_not_before_previous_departure",
+      "passed": true,
+      "detail": "0 rows"
+    },
+    {
+      "name": "departure_not_before_previous_departure",
+      "passed": true,
+      "detail": "0 rows"
+    },
+    {
+      "name": "arrival_delay_matches_times",
+      "passed": true,
+      "detail": "0 mismatches"
+    },
+    {
+      "name": "no_rollover_sized_negative_delays",
+      "passed": true,
+      "detail": "0 rows below -600 min"
+    },
+    {
+      "name": "timestamps_are_ist",
+      "passed": true,
+      "detail": ""
+    }
+  ]
+}
